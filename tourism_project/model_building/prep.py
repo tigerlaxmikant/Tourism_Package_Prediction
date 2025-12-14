@@ -1,3 +1,4 @@
+%%writefile tourism_project/model_building/prep.py
 # for data manipulation
 import pandas as pd
 import sklearn
@@ -12,7 +13,7 @@ from huggingface_hub import login, HfApi
 
 # Define constants for the dataset and output paths
 api = HfApi(token=os.getenv("HF_TOURISM_PACKAGE_TOKEN"))
-DATASET_PATH = "hf://datasets/<---repo id---->/tourism_project/tourism.csv"
+DATASET_PATH = "hf://datasets/laxmikantdeshpande/tourism-package-prediction/tourism_project/tourism.csv"
 df = pd.read_csv(DATASET_PATH)
 print("Dataset loaded successfully.")
 
@@ -52,6 +53,6 @@ for file_path in files:
     api.upload_file(
         path_or_fileobj=file_path,
         path_in_repo=file_path.split("/")[-1],  # just the filename
-        repo_id="<---repo id---->/laxmikantdeshpande/tourism-package-prediction",
+        repo_id="laxmikantdeshpande/tourism-package-prediction",
         repo_type="dataset",
     )
