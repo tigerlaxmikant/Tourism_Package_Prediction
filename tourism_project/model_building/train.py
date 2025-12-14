@@ -134,7 +134,7 @@ with mlflow.start_run():
     print(f"Model saved as artifact at: {model_path}")
 
     # Upload to Hugging Face
-    repo_id = "laxmikantdeshpande/tourism_project_model"
+    repo_id = "laxmikantdeshpande/tourism-package-prediction"
     repo_type = "model"
 
     try:
