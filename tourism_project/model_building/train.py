@@ -97,8 +97,8 @@ with mlflow.start_run():
     y_pred_test = best_model.predict(Xtest)
 
     # Metrics
-    train_rmse = best_model.predict_proba(ytrain, y_pred_train, squared=False)
-    test_rmse = best_model.predict_proba(ytest, y_pred_test, squared=False)
+    train_rmse = best_model.predict_proba(ytrain, y_pred_train)
+    test_rmse = best_model.predict_proba(ytest, y_pred_test)
 
     train_mae = best_model.predict_proba(ytrain, y_pred_train)
     test_mae = best_model.predict_proba(ytest, y_pred_test)
