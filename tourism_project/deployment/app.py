@@ -9,7 +9,7 @@ import joblib
 # Download and load the model
 model_path = hf_hub_download(
     repo_id="laxmikantdeshpande/tourism_project_model",
-    filename="best_tourism_project_model_v1.joblib"
+    filename="best_tourism_project_v1.joblib"
 )
 model = joblib.load(model_path)
 
