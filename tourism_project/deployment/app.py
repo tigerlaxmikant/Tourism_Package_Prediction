@@ -22,7 +22,7 @@ Please enter the customer details below to get a prediction.
 
 # User input
 Age = st.number_input("Age", min_value=18, max_value=100, value=30, step=1)
-TypeOfContact = st.selectbox("Type Of Contact", ["Company Invited", "Self Enquiry"])
+TypeofContact = st.selectbox("Type Of Contact", ["Company Invited", "Self Enquiry"])
 CityTier = st.selectbox("City Tier", ["1", "2", "3"])
 DurationOfPitch = st.number_input("Duration Of Pitch", min_value=0, max_value=50, value=6)
 Occupation = st.selectbox("Occupation", ["Free Lancer", "Salaried", "Large Business", "Small Business"])
