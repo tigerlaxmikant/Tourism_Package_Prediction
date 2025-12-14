@@ -74,7 +74,7 @@ if st.button("Predict"):
 hf_token = os.getenv("HF_TOKEN")
 api = HfApi()
 
-space_id = "laxmikantdeshpande/tourism-package-prediction"
+space_id = "laxmikantdeshpande/tourism_project_model"
 
 # Create the Space if missing
 try:
