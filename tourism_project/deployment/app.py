@@ -1,5 +1,8 @@
+%%writefile tourism_project/deployment/app.py
 import streamlit as st
 import pandas as pd
+from huggingface_hub import HfApi, create_repo
+import os
 from huggingface_hub import hf_hub_download
 import joblib
 
@@ -64,3 +67,36 @@ if st.button("Predict"):
     result = "Package Taken" if prediction == 1 else "Not Taken"
     st.subheader("Prediction Result:")
     st.success(f"The model predicts: **{result}**")
+
+
+
+
+hf_token = os.getenv("HF_TOKEN")
+api = HfApi()
+
+space_id = "laxmikantdeshpande/tourism-package-prediction"
+
+# Create the Space if missing
+try:
+    api.repo_info(repo_id=space_id, repo_type="space", token=hf_token)
+    print(f"Space '{space_id}' already exists.")
+except Exception:
+    create_repo(repo_id=space_id, repo_type="space", space_sdk="streamlit", private=False, token=hf_token)
+    print(f"Space '{space_id}' created.")
+
+# Upload app.py and requirements.txt
+api.upload_file(
+    path_or_fileobj="app.py",
+    path_in_repo="app.py",
+    repo_id=space_id,
+    repo_type="space",
+    token=hf_token,
+)
+
+api.upload_file(
+    path_or_fileobj="requirements.txt",
+    path_in_repo="requirements.txt",
+    repo_id=space_id,
+    repo_type="space",
+    token=hf_token,
+)
